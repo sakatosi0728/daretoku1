@@ -9,7 +9,10 @@
       </ul>
     </div>
     <p><%= @room.text %></p>
-    <span class="name"><%= @room.name %>
+    <span class="name">
+      <a href="/users/<%= @room.user.id %>">
+        <span>投稿者</span><%= @room.user.nickname %>
+      </a>
     </span>
   </div>
 </div>

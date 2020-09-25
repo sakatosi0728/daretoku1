@@ -14,7 +14,9 @@
       </div>
       <p><%= room.text %></p>
       <span class="name">
-        <%= room.name %>
+        <a href="/users/<%= room.user.id %>">
+          <span>投稿者</span><%= room.user.nickname %>
+        </a>
       </span>
     </div>
   <% end %>
