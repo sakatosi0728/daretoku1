@@ -32,6 +32,10 @@
     <% if current_user %>
       <%= form_with(model: [@room, @message], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <label class="form-image">
+          <span class="image-file">画像</span>
+          <input type="file" class="hidden">
+        </label>
         <%= form.submit "SEND" %>
       <% end %>
     <% else %>
