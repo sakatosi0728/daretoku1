@@ -24,6 +24,10 @@ class RoomsController < ApplicationController
     @messages = @room.messages.includes(:user)
   end
 
+  def search
+    @rooms = Room.search(params[:keyword])
+  end
+
   private
   def room_params
     params.require(:room).permit(:image, :text).merge(user_id: current_user.id)
