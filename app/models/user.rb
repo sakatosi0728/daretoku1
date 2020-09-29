@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :messages
 
   with_options presence: true do 
-    validates :nickname
+    validates :nickname, length: { maximum: 6 }
     validates :email, format: { with: /\A\S+@\S+\.\S+\z/}, uniqueness: true
   end
 end
