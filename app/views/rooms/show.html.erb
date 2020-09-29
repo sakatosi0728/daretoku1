@@ -18,12 +18,13 @@
     </span>
   </div>
   <div class="comments">
-      <h4>＜コメント一覧＞</h4>
+      <h4>＜メッセージ一覧＞</h4>
       <% if @messages %>
         <% @messages.each do |message| %>
           <p>
             <strong><%= link_to message.user.nickname, "/users/#{message.user_id}" %>：</strong>
             <%= message.text %>
+            <%= image_tag @message.image.variant(resize:'500x500'), class: 'message-image' if @message.image.attached?%>
           </p>
         <% end %>
       <% end %>
@@ -32,11 +33,7 @@
     <% if current_user %>
       <%= form_with(model: [@room, @message], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <label class="form-image">
-          <span class="image-file">画像</span>
-          <input type="file" class="hidden">
-        </label>
-        <%= form.submit "SEND" %>
+        <%= form.submit "メッセージを送信" %>
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
